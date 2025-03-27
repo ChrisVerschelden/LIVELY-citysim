@@ -1,6 +1,6 @@
-import { ctx } from "../other/global_context.js"
-import { intersect } from "./intersectFunctions.js"
-import { levels } from "./levels.js"
+import { ctx } from "../../storage/context.js"
+//import { intersect } from "./intersectFunctions.js"
+//import { levels } from "./levels.js"
 
 class GameObject {
     constructor(x,y,label=null,draw_mode=null){
@@ -226,6 +226,17 @@ class Square extends Rectangle {
     }     
 }
 
+class Tile extends Square {
+    constructor (x, y, width, label = null, draw_mode = null, data = {id: null}) {
+        super(x, y, width, label, draw_mode);
+        this.data = data;
+    }   
+
+    getData () {
+        return this.data;
+    }
+}
+
 class TileWithSections extends Square{
     constructor(x,y,width) {
         super(x, y, width, null)
@@ -344,7 +355,7 @@ class GO_Set {
     }
 }
 
-class Tile {
+class Tile_img {
     constructor(clipX, clipY, x, y, size, asset_path, rotation) {
         this.clipX = clipX
         this.clipY = clipY
@@ -388,4 +399,4 @@ class Level {
         
 }
 
-export { Point, Line, Circle, Label, Polygon, Rectangle, Button, Square, Triangle, TileWithSections, Level, Tile, GO_Set, Player }
+export { Point, Line, Circle, Label, Polygon, Rectangle, Button, Square, Triangle, TileWithSections, Level, Tile, GO_Set }
